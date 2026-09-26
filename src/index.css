@@ -1,0 +1,155 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ---------- Design tokens ---------- */
+:root {
+  --bg: #fafaf9;
+  --bg-soft: #f3f4f2;
+  --card: #ffffff;
+  --fg: #0c0f0e;
+  --fg-soft: #2a302e;
+  --muted: #5b6360;
+  --line: #e3e6e3;
+  --line-strong: #cfd4d0;
+  --accent: #0d8a6f;
+  --accent-strong: #0a6f59;
+  --accent-soft: #e2f4ee;
+  --accent-fg: #ffffff;
+  --glow: rgba(13, 138, 111, 0.14);
+  --grid: rgba(12, 15, 14, 0.045);
+  --shadow: 0 1px 2px rgba(12, 15, 14, 0.04), 0 8px 24px -12px rgba(12, 15, 14, 0.12);
+  --code-key: #7c3aed;
+  --code-str: #0d8a6f;
+  --code-punc: #5b6360;
+  color-scheme: light;
+}
+
+.dark {
+  --bg: #08090a;
+  --bg-soft: #0e1011;
+  --card: #111314;
+  --fg: #eceeed;
+  --fg-soft: #c9cecb;
+  --muted: #8b9490;
+  --line: #1f2324;
+  --line-strong: #2c3132;
+  --accent: #34d3a6;
+  --accent-strong: #5ee2bc;
+  --accent-soft: rgba(52, 211, 166, 0.1);
+  --accent-fg: #04130e;
+  --glow: rgba(52, 211, 166, 0.13);
+  --grid: rgba(236, 238, 237, 0.04);
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 32px -16px rgba(0, 0, 0, 0.7);
+  --code-key: #c4a7ff;
+  --code-str: #34d3a6;
+  --code-punc: #8b9490;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-soft: var(--bg-soft);
+  --color-card: var(--card);
+  --color-fg: var(--fg);
+  --color-fg-soft: var(--fg-soft);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-fg: var(--accent-fg);
+  --font-sans: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --shadow-card: var(--shadow);
+}
+
+/* ---------- Base ---------- */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-fg);
+}
+
+[tabindex="-1"]:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* ---------- Utilities ---------- */
+.bg-grid {
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+.glass {
+  background: color-mix(in srgb, var(--bg) 72%, transparent);
+  backdrop-filter: saturate(160%) blur(14px);
+  -webkit-backdrop-filter: saturate(160%) blur(14px);
+}
+
+.text-gradient {
+  background: linear-gradient(100deg, var(--fg) 20%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.marquee-track {
+  animation: marquee 40s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.pulse-dot {
+  animation: pulse-dot 2.4s ease-in-out infinite;
+}
+@keyframes pulse-dot {
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 50%, transparent); }
+  50% { box-shadow: 0 0 0 6px transparent; }
+}
+
+.flow-line {
+  stroke-dasharray: 4 6;
+  animation: flow 1.6s linear infinite;
+}
+@keyframes flow {
+  to { stroke-dashoffset: -20; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .marquee-track, .pulse-dot, .flow-line { animation: none; }
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+  }
+}
