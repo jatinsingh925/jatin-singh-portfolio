@@ -8,10 +8,10 @@ export const personalInfo = {
   tagline: 'Full-stack web applications — built secure, integrated and production-ready.',
   experience: '2+ years',
   location: 'Bhubaneswar, Odisha, India',
-  email: 'jatinsingh7043@gmail.com',
-  phone: '+91 83170 77452',
+  email: 'jatinsingh925@gmail.com',
+  phone: '+91 93366 22848',
   // Digits only, with country code — used to build the https://wa.me/ link.
-  whatsapp: '918317077452',
+  whatsapp: '919336622848',
   whatsappMessage: "Hi Jatin, I came across your portfolio and would like to discuss a project.",
   github: 'https://github.com/jatinsingh925',
   linkedin: 'https://www.linkedin.com/in/-jatinsingh',

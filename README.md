@@ -78,7 +78,7 @@ npm run preview    # serve the production build locally at http://localhost:4173
 
 ## Deployment (Vercel)
 
-The repository is connected to Vercel, so every push to `main` deploys automatically.
+To deploy every push to `main` automatically, connect the repository in **Vercel → Project → Settings → Git**.
 To deploy manually:
 
 ```bash
@@ -92,7 +92,7 @@ If you move to a different domain, update the URL in `index.html` (canonical, Op
 
 ### Personal information and links
 Edit `src/data/personal.js`. Set any field to `""` to hide it everywhere. For example, an empty `whatsapp` hides the floating button and the WhatsApp card.
-`whatsapp` must be digits only, including the country code (for example `918317077452`).
+`whatsapp` must be digits only, including the country code (for example `919336622848`).
 
 ### Projects
 Edit `src/data/projects.js`. Each project supports:
